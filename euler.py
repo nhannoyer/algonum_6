@@ -86,22 +86,22 @@ def meth_n_step(y0,t0,N,h,f,meth):
 
 def step_euler2(y,t,h,f):
    	return np.array(y + h*f(y,t))
-
+                
 def euler2(y0,t0,N,h,f):
-    y = np.array([0.0,0.0]*N)
-    y[0] = y0
-    T = np.array([(t0 + h*i) for i in range(N)])
-    for k in range (N-1):
-        y[k+1] = step_euler2(y[k],T[k],h,f)
-    return np.array(y)
+        y = np.array([[0.0,0.0]]*N)
+        y[0] = y0
+        T = np.array([(t0 + h*i) for i in range(N)])
+        for k in range (N-1):
+                y[k+1] = step_euler2(y[k],T[k],h,f)
+        return np.array(y)
 
 def F2(teta,t):
         g = 9.81
         l = 5
         return(np.array([teta[1],-g*m.sin(teta[0])/l]))
 
-y2 = np.array[0.0,0.0]
-t2 = 0.0
+y5 = np.array([0.0,1.0])
+t5 = 0.0
 
 ##################### Tests #####################
 
@@ -120,9 +120,13 @@ y2 = pt_milieu_n_step(y0,t0,N,h,F)
 y3 = heun_n_step(y0,t0,N,h,F)
 y4 = rungek_n_step(y0,t0,N,h,F)
 
-y = euler2(y2,t2,N,h,F2)
-plt.plot(t,y[0],'b-')
-
+y = euler2(y5,t5,N,h,F2)
+tmp=np.array([0.0]*len(y))
+for k in range(len(y)):
+        tmp[k]=y[k][0]
+        
+plt.plot(t,tmp,'b-')
+ 
 #plt.plot(t,y1,'b-')
 #plt.plot(t,y2,'g-')
 #plt.plot(t,y3,'b-')
