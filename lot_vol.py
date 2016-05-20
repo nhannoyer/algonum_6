@@ -35,7 +35,7 @@ def plot_lotka_volterra(y0, t0, N, h):
 
 y0 = 10  #population a l'instant t0
 t0 = 0
-N = 100
+N = 2110
 h = 0.01
 
 #plot_lotka_volterra(y0, t0, N, h)
@@ -44,14 +44,16 @@ h = 0.01
 ############# Systeme proies-predateurs #############
 
 
+#populations initiales de proies et de predateurs
+y01 = [100, 10]
 #taux de reproduction des proies
-a = 2
+a = 5
 #taux de mortalite des proies
 b = 1  
 #taux de reproduction des predateurs
-c = 1  
+c = 0.5  
 #taux de mortalite des predateurs
-d = 0.5  
+d = 5
 
 
 def U(u, v):
@@ -84,7 +86,17 @@ def plot_proie_predat(y0, t0, N, h):
     plt.show()
 
 
-y01 = [100, 10]
+#plot_proie_predat(y01, t0, N, h)
 
-plot_proie_predat(y01, t0, N, h)
 
+def plot_proie_predat2(y0, t0, N, h):
+    sol = solve_eq2(y0, t0, N, h, F_pp)
+    y1 = [sol[0][0]]
+    y2 = [sol[0][1]]
+    for i in range(N-1):
+        y1.append(sol[i+1][0])
+        y2.append(sol[i+1][1])
+    plt.plot(y1, y2)
+    plt.show()
+
+plot_proie_predat2(y01, t0, N, h)
