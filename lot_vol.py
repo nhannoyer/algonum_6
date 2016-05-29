@@ -92,7 +92,7 @@ def periode(x, y, err=1):
             maxima.append(i)
     count = len(maxima)
     if count <= 2:
-        print('Pas assez de maximums, agrandissez l\'axe des ordonnées')
+        print('Pas assez de maximums, agrandissez l\'axe des ordonnees')
     else:
         periodique = True
         moyenne = 0
