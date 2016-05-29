@@ -55,17 +55,14 @@ for k in range(len(y2)):
         tmp[k]=y2[k][0]
 
 
-plt.plot(t,y1)
-plt.plot(t,y2)
+plt.plot(t,tmp,'b')
+plt.plot(t,tmp2,'r')
 plt.legend()
 plt.xlabel('Temps')
 plt.ylabel('frequence')
 plt.title('Evolution de la frequence du pendule dans le temps')
 plt.show()
 
-plt.plot(t,tmp,'b')
-plt.plot(t,tmp2,'r')
-plt.show()
 
 
 #####    Affichage des differentes positions prises en fonction    #####
@@ -149,6 +146,10 @@ plt.plot(t,f3)
 plt.plot(t,f4)
 plt.plot(t,f5)
 plt.plot(t,f6)
+plt.legend()
+plt.xlabel('Temps')
+plt.ylabel('frequence')
+plt.title('Evolution de la frequence dans le temps pour differentes valeurs initiales')
  
 plt.show()
 
