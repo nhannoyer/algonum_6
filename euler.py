@@ -6,15 +6,15 @@ import matplotlib.pyplot as plt
 ##################### Methode d'Euler #####################
 
 def step_euler(y,t,h,f):
-   	return(y + h*f(y,t))
+	return(y + h*f(y,t))
 
 def euler_n_step(y0,t0,N,h,f):
-    y = np.array([0.0]*N)
-    y[0] = y0
-    T = np.array([(t0 + h*i) for i in range(N)])
-    for k in range (N-1):
-        y[k+1] = step_euler(y[k],T[k],h,f)
-    return np.array(y)
+	y = np.array([0.0]*N)
+	y[0] = y0
+	T = np.array([(t0 + h*i) for i in range(N)])
+	for k in range (N-1):
+		y[k+1] = step_euler(y[k],T[k],h,f)
+	return np.array(y)
 
 
 ##################### Methode du point milieu #####################
@@ -69,13 +69,13 @@ def rungek_n_step(y0,t0,N,h,f):
 ##################### Fonction generiques #####################
 
 def meth_n_step(y0,t0,N,h,f,meth):
-        meth = "step_" + meth
-        y = np.array([0.0]*N)
-        y[0] = y0
-        T = np.array([(t0 + h*i) for i in range(N)])
-        for k in range (N-1):
-                y[k+1] = step_(y[k],T[k],h,f)
-        return np.array(y)
+	meth = "step_" + meth
+	y = np.array([0.0]*N)
+	y[0] = y0
+	T = np.array([(t0 + h*i) for i in range(N)])
+	for k in range (N-1):
+		y[k+1] = step_(y[k],T[k],h,f)
+	return np.array(y)
 
 #def meth_epsilon(y0,t0,tf,eps,f,meth):
 #        y = np.array([0.0]*)
