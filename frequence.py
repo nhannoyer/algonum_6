@@ -1,5 +1,6 @@
 from euler import euler2
 from math import sqrt
+import numpy as np
 
 def F(teta,t):
     g = 9.81
@@ -18,6 +19,8 @@ def frequence_pendule(theta0,F):
 theta01 = np.array([0.0,1.0])
 theta02 = np.array([0.3,1.5])
 t0 = 0
+N=20
+h=0.25
 tf = t0 + 2*N*h
 t = np.linspace(t0,tf,N)
 y1 = frequence_pendule(theta01,F)
