@@ -2,7 +2,7 @@ from euler import euler2
 from math import sqrt
 import numpy as np
 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from math import sin
 
 
@@ -49,8 +49,10 @@ for k in range(len(y2)):
         tmp[k]=y2[k][0]
 
         
-plt.plot(t,tmp,'b-')([theta01[1],-g*m*sin(theta01[0])/l])
-plt.plot(t,tmp2,'g-')([theta02[1],-g*m*sin(theta02[0])/l]) 
+plt.plot(t,tmp,'b')
+plt.plot([theta01[1],-g*m*sin(theta01[0])/l])
+plt.plot(t,tmp2,'r')
+plt.plot([theta02[1],-g*m*sin(theta02[0])/l]) 
 
 plt.show()
 
