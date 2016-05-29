@@ -1,15 +1,14 @@
 from euler import euler2
 from math import sqrt
 import numpy as np
+
 import matplotlib as plt
 from math import sin
 
 
-"""The function F represent                                                                                                                                                                               
-    enter: f a fonction, J the jocobian of f,                                                                                                                                                                
-    U0 the initializing vector, N the maxinal number of iterations,                                                                                                                                          
-    epsilon the threshold of error                                                                                                                                                                           
-    return: an estimate of the root"""
+"""The function F represent the adaptation                                                                                                                                                                              
+    enter: 
+    return: """
 def F(teta,t):
     g = 9.81
     l = 5
@@ -17,12 +16,9 @@ def F(teta,t):
     return(np.array([teta[1],-g*m*sin(teta[0])/l]))
 
 
-"""The same algorithm with backtracking added                                                                                                                                                            
-    to find the solution faster                                                                                                                                                                              
-    enter: f a fonction, J the jocobian of f,                                                                                                                                                                
-    U0 the initializing vector, N the maxinal number of iterations,                                                                                                                                          
-    epsilon the threshold of error                                                                                                                                                                           
-    return: an estimate of the root"""
+"""                                                                                                                                                                             
+    enter:                                                                                                                                                                          
+    return: """
 def frequence_pendule(theta0,F):
     t0 = 0
     N = 20
@@ -39,6 +35,8 @@ m = 3
 theta01 = np.array([0.0,1.0])
 theta02 = np.array([0.3,1.5])
 t0 = 0
+N=20
+h=0.25
 tf = t0 + 2*N*h
 t = np.linspace(t0,tf,N)
 y1 = frequence_pendule(theta01,F)
