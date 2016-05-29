@@ -6,6 +6,11 @@ import matplotlib.pyplot as plt
 from math import sin
 
 
+"""The function F represent the transformation
+    to adapt a second degree differencial equation                                                                                                                                                                            
+    enter: theta the variable represented the variations of angle
+           t     the variable represented the variations of time
+    return: The fonction F as describe above """
 
 """The function F represent the adaptation                                                                                                                                                                              
     enter: 
