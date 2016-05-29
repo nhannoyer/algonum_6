@@ -1,13 +1,28 @@
 from euler import euler2
 from math import sqrt
+import numpy as np
+import matplotlib as plt
+from math import sin
 
+
+"""The function F represent                                                                                                                                                                               
+    enter: f a fonction, J the jocobian of f,                                                                                                                                                                
+    U0 the initializing vector, N the maxinal number of iterations,                                                                                                                                          
+    epsilon the threshold of error                                                                                                                                                                           
+    return: an estimate of the root"""
 def F(teta,t):
     g = 9.81
     l = 5
-    return(np.array([teta[1],-g*m.sin(teta[0])/l]))
-    
+    m = 3
+    return(np.array([teta[1],-g*m*sin(teta[0])/l]))
 
 
+"""The same algorithm with backtracking added                                                                                                                                                            
+    to find the solution faster                                                                                                                                                                              
+    enter: f a fonction, J the jocobian of f,                                                                                                                                                                
+    U0 the initializing vector, N the maxinal number of iterations,                                                                                                                                          
+    epsilon the threshold of error                                                                                                                                                                           
+    return: an estimate of the root"""
 def frequence_pendule(theta0,F):
     t0 = 0
     N = 20
@@ -15,6 +30,12 @@ def frequence_pendule(theta0,F):
     T1 = euler2(theta0,t0,N,h,F)
     return T1
 
+t0 = 0
+N = 20
+h = 0.25
+g = 9.81
+l = 5
+m = 3
 theta01 = np.array([0.0,1.0])
 theta02 = np.array([0.3,1.5])
 t0 = 0
@@ -30,8 +51,8 @@ for k in range(len(y2)):
         tmp[k]=y2[k][0]
 
         
-plt.plot(t,tmp,'b-')([teta[1],-g*m.sin(teta[0])/l])
-plt.plot(t,tmp2,'g-')([teta[1],-g*m.sin(teta[0])/l]) 
+plt.plot(t,tmp,'b-')([theta01[1],-g*m*sin(theta01[0])/l])
+plt.plot(t,tmp2,'g-')([theta02[1],-g*m*sin(theta02[0])/l]) 
 
 plt.show()
 
