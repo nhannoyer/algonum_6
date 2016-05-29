@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from math import sin
 
 
+
 """The function F represent the adaptation                                                                                                                                                                              
     enter: 
     return: """
@@ -50,10 +51,10 @@ for k in range(len(y2)):
 
         
 plt.plot(t,tmp,'b')
-plt.plot([theta01[1],-g*m*sin(theta01[0])/l])
 plt.plot(t,tmp2,'r')
-plt.plot([theta02[1],-g*m*sin(theta02[0])/l]) 
 
 plt.show()
 
-    
+#plt.plot([theta01[1],-g*m*sin(theta01[0])/l])
+#plt.plot([theta02[1],-g*m*sin(theta02[0])/l]) 
+#plt.show()    
