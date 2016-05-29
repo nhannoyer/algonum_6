@@ -54,12 +54,16 @@ tmp2=np.array([0.0]*len(y2))
 for k in range(len(y2)):
         tmp[k]=y2[k][0]
 
-        
-plt.plot(t,tmp,'b')
-plt.plot(t,tmp2,'r')
 
+plt.plot(t,y1)
+plt.plot(t,y2)
+plt.legend()
+plt.xlabel('Temps')
+plt.ylabel('frequence')
+plt.title('Evolution de la frequence du pendule dans le temps')
 plt.show()
 
-#plt.plot([theta01[1],-g*m*sin(theta01[0])/l])
-#plt.plot([theta02[1],-g*m*sin(theta02[0])/l]) 
-#plt.show()    
+plt.plot(t,tmp,'b')
+plt.plot(t,tmp2,'r')
+plt.show()
+
