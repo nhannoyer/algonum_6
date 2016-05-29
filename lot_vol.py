@@ -2,14 +2,6 @@ from euler import *
 import matplotlib.pyplot as plt
 
 
-# taux de natalite
-births = 3  
-# taux de mortalite
-deaths = 1  
-# capacite d'accueil de l'environnement
-kappa = 100  
-
-
 def F1(y, t):
     """
     Modele de Malthus
@@ -40,31 +32,8 @@ def plot_lotka_volterra(y0, t0, N, h):
     plt.legend()
     plt.xlabel('Temps')
     plt.ylabel('Population')
+    plt.title('Evolution d\'une population suivant deux modeles')
     plt.show()
-
-
-y0 = 10  # population a l'instant t0
-t0 = 0
-N1 = 250  # pour le modele malthusien qui overflow si trop d'iterations
-N2 = 50000
-h = 0.01
-
-plot_lotka_volterra(y0, t0, N1, h)
-
-
-############# Systeme proies-predateurs #############
-
-
-# populations initiales de proies et de predateurs
-y01 = [100, 20]
-# taux de reproduction des proies
-a = 0.3
-# taux de mortalite des proies
-b = 0.03
-# taux de reproduction des predateurs
-c = 0.005
-# taux de mortalite des predateurs
-d = 0.1
 
 
 def U(u, v):
@@ -129,10 +98,8 @@ def plot_proie_predat(y0, t0, N, h):
     plt.legend()
     plt.xlabel('Temps')
     plt.ylabel('Populations')
+    plt.title('Modele proie-predateur de Lotka-Volterra')
     plt.show()
-
-
-plot_proie_predat(y01, t0, N2, h)
 
 
 def plot_proie_predat_couple(y0, t0, N, h):
@@ -145,9 +112,66 @@ def plot_proie_predat_couple(y0, t0, N, h):
     plt.plot(y1, y2)
     plt.xlabel('Population proies')
     plt.ylabel('Population predateurs')
+    plt.title('Modele proie-predateur de Lotka-Volterra')
     plt.show()
 
 
+def plot_solutions_proches(y0, t0, N, h, d, n):
+    pas = d/float(2*n)
+    for i in range(-n, n+1):
+        for j in range(-n, n+1):
+            pop = y0 + np.array([pas*i, pas*j])
+            sol = solve_eq2(pop, t0, N, h, F_pp)
+            y1 = [sol[0][0]]
+            y2 = [sol[0][1]]
+            for k in range(N-1):
+                y1.append(sol[k+1][0])
+                y2.append(sol[k+1][1])
+            plt.plot(y1, y2)
+    plt.xlabel('Population proies')
+    plt.ylabel('Population Predateurs')
+    plt.title('Affichage des solutions autour de la condition initiale %s' % y0)
+    plt.show()
+
+
+############# Parametres #############
+
+
+# taux de natalite
+births = 3
+# taux de mortalite
+deaths = 1
+# capacite d'accueil de l'environnement
+kappa = 100
+
+
+# population a l'instant t0
+y0 = 10
+t0 = 0
+# N1 pour le modele malthusien qui overflow si trop d'iterations, N2 pour le systeme proie-predateur
+N1 = 250
+N2 = 50000
+# N3 pour les solutions proches
+N3 = 5300
+h = 0.01
+
+
+############# Systeme proies-predateurs #############
+
+
+# populations initiales de proies et de predateurs
+y01 = [100, 20]
+# taux de reproduction des proies
+a = 0.3
+# taux de mortalite des proies
+b = 0.03
+# taux de reproduction des predateurs
+c = 0.005
+# taux de mortalite des predateurs
+d = 0.1
+
+
+plot_lotka_volterra(y0, t0, N1, h)
+plot_proie_predat(y01, t0, N2, h)
 plot_proie_predat_couple(y01, t0, N2, h)
-
-
+plot_solutions_proches(y01, t0, N3, h, 5, 1)
